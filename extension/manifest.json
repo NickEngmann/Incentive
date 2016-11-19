@@ -1,0 +1,32 @@
+{
+  "manifest_version": 2,
+
+  "name": "Incentive",
+  "description": "Get the motivation needed to finish your Tasks, Projects, and Goals",
+  "version": "0.1",
+  "options_page": "options.html",
+  "permissions": ["tabs"],
+  "browser_action": {
+    "default_icon": "logo.png",
+    "default_popup": "options.html"
+  },
+  "chrome_url_overrides" : {
+    "newtab": "incentive.html"
+  },
+  "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+  },
+    "icons":{
+        "64" : "logo.png"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "css": ["incentive.css"],
+        "js": ["open-dialog.js","jquery3.min.js"]
+      }
+  ]
+}
