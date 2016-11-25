@@ -1,11 +1,34 @@
 var goalDate = 23;
 var goalMonth = 6;
 var goalYear = 2023;
-var goalText = "Click the Logo and Set a Goal";
 
-var birthdayDate = 23;
-var birthdayMonth = 6;
-var birthdayYear = 1993;
+
+// var birthdayDate = 23;
+// var birthdayMonth = 6;
+// var birthdayYear = 1993;
+var storage = {};
+var stor = true;
+
+if (localStorage && localStorage.getItem('list')) {
+ storage = JSON.parse(localStorage.getItem('list'));
+  }
+  else {
+  storage = {
+      "bDay" : 23,
+      "bMonth" : 6,
+      "bYear" : 1993,
+      "gDay" : 23,
+      "gMonth" : 6,
+      "gYear": 2023,
+      "gText": "Click The Logo In Top Right Corner To Set A Goal"
+    }
+    stor = false;
+  }
+  var birthday = new Date();
+  birthday.setYear(storage.bYear);
+  birthday.setMonth(storage.bMonth);
+  birthday.setDate(storage.bDay);
+  var goalText = storage.gText;
 
 function getTimeRemaining(endtime) {
   var t = Date.parse(endtime) - Date.parse(new Date());
@@ -37,18 +60,37 @@ function initializeClock(id, endtime, goaltime) {
   var secondsinDaySpan = clock.querySelector('.secondsinDay');
   var ageSpan = clock.querySelector('.age');
   var yearsSpan = clock.querySelector('.years');
-  
   var goalSpan = clock.querySelector('.goals');
 
   function updateClock() {
-    var t = getTimeRemaining(endtime);
-    var l = getTimeRemaining(goaltime);
+if (localStorage && localStorage.getItem('list')) {
+ storage = JSON.parse(localStorage.getItem('list'));
+  }
+  else {
+  storage = {
+      "bDay" : 23,
+      "bMonth" : 6,
+      "bYear" : 1993,
+      "gDay" : 23,
+      "gMonth" : 6,
+      "gYear": 2023,
+      "gText": "Click The Logo In Top Right Corner To Set A Goal"
+    }
+  }
+    goal.setYear(storage.gYear);
+    goal.setMonth(storage.gMonth);
+    goal.setDate(storage.gDay);
+    birthday.setYear(storage.bYear);
+    birthday.setMonth(storage.bMonth);
+    birthday.setDate(storage.bDay);
 
+    var t = getTimeRemaining(endtime);
+    var l = getTimeRemaining(goal);
     var current = new Date();
     var age = (current - birthday)/31557600000;
     yearsSpan.innerHTML = l.years;
     daysSpan.innerHTML = l.days;
-    goalSpan.innerHTML = goalText;
+    goalSpan.innerHTML = storage.gText;
     hoursSpan.innerHTML = ('0' + l.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + l.minutes).slice(-2);
     secondsSpan.innerHTML = ('0' + l.seconds).slice(-2);
@@ -58,24 +100,20 @@ function initializeClock(id, endtime, goaltime) {
     if (t.total <= 0) {
       clearInterval(timeinterval);
     }
+
+    storage = JSON.parse(localStorage.getItem('list'));
+
   }
 
   updateClock();
   var timeinterval = setInterval(updateClock, 100);
 }
 
-	var birthday = new Date();
-  birthday.setYear(birthdayYear);
-  birthday.setMonth(birthdayMonth);
-  birthday.setDate(birthdayDate);
-  
  	var d = new Date();
  	var h = d.getHours();
  	var m = d.getMinutes();
  	var s = d.getSeconds();
 	var deadline = new Date(Date.parse(new Date()) + 1 * (24 * 60 * 60 - (60*m + s) - (h*60*60)) * 1000);
 	var goal = new Date();  
-  goal.setYear(goalYear);
-  goal.setMonth(goalMonth);
-  goal.setDate(goalDate);
-  initializeClock('clockdiv', deadline, goal);
+
+  initializeClock('clockdiv', deadline);
