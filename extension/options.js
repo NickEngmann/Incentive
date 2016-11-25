@@ -10,10 +10,10 @@ var storage = {}
      var gY= document.getElementById('goalYear');
      var gT= document.getElementById('goalText');
       bD.value = storage.bDay;
-      bM.value = storage.bMonth;
+      bM.value = storage.bMonth + 1;
       bY.value = storage.bYear;
       gD.value = storage.gDay;
-      gM.value = storage.gMonth;
+      gM.value = storage.gMonth + 1;
       gY.value = storage.gYear;
       gT.value = storage.gText;
 }
@@ -32,11 +32,11 @@ function save_options() {
 
   storage = {
     "bDay": localbirthDay,
-    "bMonth": localbirthMonth,
+    "bMonth": localbirthMonth - 1,
     "bYear": localbirthYear,
     "gText": localgoalText,
     "gDay": localgoalDay,
-    "gMonth": localgoalMonth,
+    "gMonth": localgoalMonth - 1,
     "gYear": localgoalYear
   };
   localStorage.setItem('list', JSON.stringify(storage));

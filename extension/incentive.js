@@ -87,6 +87,9 @@ if (localStorage && localStorage.getItem('list')) {
     var t = getTimeRemaining(endtime);
     var l = getTimeRemaining(goal);
     var current = new Date();
+    console.log(current);
+    console.log(birthday);
+    console.log(goal);
     var age = (current - birthday)/31557600000;
     yearsSpan.innerHTML = l.years;
     daysSpan.innerHTML = l.days;
