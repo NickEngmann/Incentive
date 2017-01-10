@@ -80,6 +80,10 @@ if (localStorage && localStorage.getItem('list')) {
     goal.setYear(storage.gYear);
     goal.setMonth(storage.gMonth);
     goal.setDate(storage.gDay);
+    goal.setHours(0);
+    goal.setMinutes(0);
+    goal.setSeconds(0);
+
     birthday.setYear(storage.bYear);
     birthday.setMonth(storage.bMonth);
     birthday.setDate(storage.bDay);
@@ -87,8 +91,8 @@ if (localStorage && localStorage.getItem('list')) {
     var t = getTimeRemaining(endtime);
     var l = getTimeRemaining(goal);
     var current = new Date();
-    console.log(current);
-    console.log(birthday);
+    // console.log(current);
+    // console.log(birthday);
     console.log(goal);
     var age = (current - birthday)/31557600000;
     yearsSpan.innerHTML = l.years;
