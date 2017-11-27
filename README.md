@@ -1,4 +1,5 @@
-#Incentive 0.1#
+# Incentive 0.1
+
 **How to run the app**
 </br>
 0) Download/Clone this repo </br>
