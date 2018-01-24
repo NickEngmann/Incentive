@@ -1,5 +1,5 @@
 # Incentive 0.1
-![logo](https://github.com/NickEngmann/Incentive/blob/master/imgs/icon.png)
+![logo](https://github.com/NickEngmann/Incentive/blob/master/imgs/icon.png) </br>
 **How to run the app**
 </br>
 
